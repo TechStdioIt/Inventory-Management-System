@@ -1,4 +1,7 @@
-﻿using IMS.Infrastructure.DBContext;
+﻿using IMS.Application.ServiceInterface;
+using IMS.Infrastructure.DBContext;
+using IMS.Infrastructure.ServiceRepository;
+using IMS.Infrastructure.ServiceRepository.BaseRepository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace IMS.Infrastructure.RegisterServices
@@ -9,7 +12,9 @@ namespace IMS.Infrastructure.RegisterServices
 
         {
             services.AddTransient<IMSContextDapper>();
+            services.AddScoped<IAdministrator,AdministratorServices>();
             return services;
+            
         }
     }
 }
