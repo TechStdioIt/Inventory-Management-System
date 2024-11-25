@@ -1,0 +1,12 @@
+﻿Specific Table:
+
+Scaffold-DbContext "Server=103.191.241.252;Database=IMS;User Id=sa;Password=Asdf019lkjh;TrustServerCertificate=true;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir DEMODATA -OutputDir DEMODATA -UseDatabaseNames -Tables Rest_Menu,FoodItems,Food_SizeCustomization,Food_ChoiceOptions,Food_AddOns,Food_AssignLabel -force
+
+
+
+All Tables:
+
+Scaffold-DbContext "Server=103.174.50.215;Database=IMS;User Id=sa;Password=Asdf019lkjh;TrustServerCertificate=true;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -ContextDir DEMODATA -OutputDir DEMODATA -UseDatabaseNames -Force
+
+
+
