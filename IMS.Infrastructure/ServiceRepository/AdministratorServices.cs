@@ -347,7 +347,7 @@ namespace IMS.Infrastructure.ServiceRepository
                 parameters.Add("@Flag", flag);
                 using (var _dp = _contextDapper.CreateConnection())
                 {
-                    var query = await _dp.QueryAsync<dynamic>("DropDownSp", parameters, commandType: CommandType.StoredProcedure);
+                    var query = await _dp.QueryAsync<dynamic>("SP_DropDown", parameters, commandType: CommandType.StoredProcedure);
                     return query;
                 }
             }

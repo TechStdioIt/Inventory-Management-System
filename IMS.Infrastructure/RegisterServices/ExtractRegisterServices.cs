@@ -13,6 +13,7 @@ namespace IMS.Infrastructure.RegisterServices
         {
             services.AddTransient<IMSContextDapper>();
             services.AddScoped<IAdministrator,AdministratorServices>();
+            services.AddScoped<IStoreType, StoreTypeService>();
             return services;
             
         }
