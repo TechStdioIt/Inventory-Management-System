@@ -158,6 +158,11 @@ builder.Services.AddAuthentication(options =>
 
 
 });
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("http://localhost:4200", "http://103.119.101.170:4003", "http://192.168.20.6:4003").AllowAnyMethod().AllowAnyHeader()
+            .AllowCredentials();
+}));
 var app = builder.Build();
 // Middleware to log the origin of requests
 app.Use(async (context, next) =>
@@ -184,6 +189,7 @@ if (IsDevelopment)
         }
     });
 }
+app.UseCors("corsapp");
 app.UseStaticFiles();
 app.UseCookiePolicy();
 app.UseRouting();
