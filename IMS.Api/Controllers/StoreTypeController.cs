@@ -24,7 +24,7 @@ namespace IMS.Api.Controllers
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Operation completed successfully.",
+                    Message = "Reviews retrieved successfully",
                     Data = result
                 });
             }
@@ -33,7 +33,7 @@ namespace IMS.Api.Controllers
                 return StatusCode(500, new
                 {
                     Status = 500,
-                    Message = "Operation failed. Please contact support if the problem persists.",
+                    Message = "An error occurred while retrieving reviews",
                     ErrorDetails = ex.Message
                 });
             }
@@ -47,7 +47,7 @@ namespace IMS.Api.Controllers
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Operation completed successfully.",
+                    Message = "Reviews retrieved successfully",
                     Data = result
                 });
             }
@@ -56,7 +56,7 @@ namespace IMS.Api.Controllers
                 return StatusCode(500, new
                 {
                     Status = 500,
-                    Message = "Operation failed. Please contact support if the problem persists.",
+                    Message = "An error occurred while retrieving reviews",
                     ErrorDetails = ex.Message
                 });
             }
@@ -70,7 +70,7 @@ namespace IMS.Api.Controllers
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Operation completed successfully.",
+                    Message = "Reviews retrieved successfully",
                     Data = result
                 });
             }
@@ -79,7 +79,7 @@ namespace IMS.Api.Controllers
                 return StatusCode(500, new
                 {
                     Status = 500,
-                    Message = "Operation failed. Please contact support if the problem persists.",
+                    Message = "An error occurred while retrieving reviews",
                     ErrorDetails = ex.Message
                 });
             }
