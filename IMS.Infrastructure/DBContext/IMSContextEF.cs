@@ -20,6 +20,7 @@ namespace IMS.Infrastructure.DBContext
             _connectionString = _configuration.GetConnectionString(_dbCon);
         }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<IMSMenu> IMSMenus { get; set; }
 
         public virtual DbSet<AspNetRoleClaim> AspNetRoleClaims { get; set; }
 
@@ -49,6 +50,17 @@ namespace IMS.Infrastructure.DBContext
 
                 entity.Property(e => e.Name).HasMaxLength(256);
                 entity.Property(e => e.NormalizedName).HasMaxLength(256);
+            });
+            modelBuilder.Entity<IMSMenu>(entity =>
+            {
+                entity.ToTable("IMSMenus"); // Specify table name if it doesn't match the class name
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Title).HasMaxLength(255).IsRequired();
+                entity.Property(e => e.Type).HasMaxLength(50).IsRequired();
+                entity.Property(e => e.Url).HasMaxLength(500).IsRequired();
+                entity.Property(e => e.Icon).HasMaxLength(255).IsRequired();
+                entity.Property(e => e.Classes).HasMaxLength(255);
             });
 
             modelBuilder.Entity<AspNetRoleClaim>(entity =>
