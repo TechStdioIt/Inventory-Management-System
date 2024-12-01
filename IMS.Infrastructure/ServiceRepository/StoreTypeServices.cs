@@ -15,9 +15,9 @@ using System.Threading.Tasks;
 
 namespace IMS.Infrastructure.ServiceRepository
 {
-    public class StoreTypeService : BaseRepository<object>, IStoreType
+    public class StoreTypeServices : BaseRepository<object>, IStoreType
     {
-        public StoreTypeService(IMSContextEF context, ApplicationDbContext applicationDb, IMSContextDapper contextDapper, UserManager<ApplicationDbUser> userManager, IConfiguration configuration) : base(context, applicationDb, contextDapper, userManager, configuration)
+        public StoreTypeServices(IMSContextEF context, ApplicationDbContext applicationDb, IMSContextDapper contextDapper, UserManager<ApplicationDbUser> userManager, IConfiguration configuration) : base(context, applicationDb, contextDapper, userManager, configuration)
         {
 
         }

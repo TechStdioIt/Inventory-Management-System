@@ -9,8 +9,9 @@ namespace IMS.Domain.ViewModels
 {
         public class AspNetRoleVM
         {
-        
-            [Required]
+        public string? Id { get; set; } 
+
+        [Required]
             public string RoleName { get; set; }
         }
         public class AssignRoleVM
