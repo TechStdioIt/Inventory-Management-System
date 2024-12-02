@@ -16,6 +16,7 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<IStoreType, StoreTypeServices>();
             services.AddScoped<IIMSMenu, IMSMenuServices>();
             services.AddScoped<IRole, RoleServices>();
+            services.AddScoped<ICategory,CategoryServices>();
             return services;
             
         }
