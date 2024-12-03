@@ -18,8 +18,8 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<IRole,RoleServices>();
             services.AddScoped<ICategory,CategoryServices>();
             services.AddScoped<ISuppliers,SuppliersServices>();
+            services.AddScoped<IBank, BankServices>();
             return services;
-            
         }
     }
 }

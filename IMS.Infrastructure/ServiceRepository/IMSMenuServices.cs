@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Dapper;
 using IMS.Application.ServiceInterface;
 using IMS.Domain.Models;
+using IMS.Domain.ViewModels;
 using IMS.Infrastructure.DBContext;
 using IMS.Infrastructure.IdentityModels;
 using IMS.Infrastructure.ServiceRepository.BaseRepository;
@@ -15,13 +16,23 @@ using Microsoft.Extensions.Configuration;
 
 namespace IMS.Infrastructure.ServiceRepository
 {
-    public class IMSMenuServices : BaseRepository<IMSMenu>, IIMSMenu
+    public class IMSMenuServices : BaseRepository<object>, IIMSMenu
     {
         public IMSMenuServices(IMSContextEF context, ApplicationDbContext applicationDb, IMSContextDapper contextDapper, UserManager<ApplicationDbUser> userManager, IConfiguration configuration) : base(context, applicationDb, contextDapper, userManager, configuration)
         {
         }
 
-        public async Task<IEnumerable<IMSMenu>> GetMenuAsync()
+        public Task<dynamic> CreateOrUpdateMenu(IMSMenuVm data)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<dynamic> DeleteMenu(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<dynamic> GetAllMenu()
         {
             try
             {
@@ -36,6 +47,12 @@ namespace IMS.Infrastructure.ServiceRepository
                 throw;
             }
         }
+
+        public Task<dynamic> GetMenuById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         private  List<IMSMenu> BuildMenuHierarchy(List<IMSMenu> menuItems, int? parentId)
         {
             return menuItems

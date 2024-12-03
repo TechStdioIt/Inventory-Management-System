@@ -7,19 +7,20 @@ namespace IMS.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuController : ControllerBase
+    public class BankController : ControllerBase
     {
-        private readonly IIMSMenu _menu;
-        public MenuController(IIMSMenu menu)
+        private readonly IBank _bank;
+
+        public BankController(IBank bank)
         {
-            _menu = menu;  
+            _bank = bank;
         }
-        [HttpGet("GetAllMenu")]
-        public async Task<IActionResult> GetAllMenu()
+        [HttpGet("GetAllBank")]
+        public async Task<IActionResult> GetAllBank()
         {
             try
             {
-                var result = await _menu.GetAllMenu();
+                var result = await _bank.GetAllBank();
                 return Ok(new
                 {
                     Status = 200,
@@ -37,12 +38,12 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("CreateOrUpdateMenu")]
-        public async Task<IActionResult> CreateOrUpdateMenu(IMSMenuVm data)
+        [HttpPost("CreateOrUpdateBank")]
+        public async Task<IActionResult> CreateOrUpdateBank(BankVM data)
         {
             try
             {
-                var result = await _menu.CreateOrUpdateMenu(data);
+                var result = await _bank.CreateOrUpdateBank(data);
                 return Ok(new
                 {
                     Status = 200,
@@ -60,12 +61,12 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("GetMenuById")]
-        public async Task<IActionResult> GetMenuById(int id)
+        [HttpGet("GetBankById")]
+        public async Task<IActionResult> GetBankById(int id)
         {
             try
             {
-                var result = await _menu.GetMenuById(id);
+                var result = await _bank.GetBankById(id);
                 return Ok(new
                 {
                     Status = 200,
@@ -83,12 +84,12 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeleteMenu")]
-        public async Task<IActionResult> DeleteMenu(int id)
+        [HttpGet("DeleteBank")]
+        public async Task<IActionResult> DeleteBank(int id)
         {
             try
             {
-                var result = await _menu.DeleteMenu(id);
+                var result = await _bank.DeleteBank(id);
                 return Ok(new
                 {
                     Status = 200,
