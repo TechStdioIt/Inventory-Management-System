@@ -12,5 +12,6 @@ namespace IMS.Application.ServiceInterface
         Task<dynamic> GetAllCategory();
         Task<dynamic> CreateOrUpdate(CategoryVM data);
         Task<dynamic> GetCategoryById(int id);
+        Task<dynamic> DeleteCategory(int id);
     }
 }
