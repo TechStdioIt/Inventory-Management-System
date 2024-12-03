@@ -16,6 +16,7 @@ namespace IMS.Api.Controllers
         [HttpGet("GetAllMenu")]
         public async Task<IActionResult> GetAllMenus()
         {
+
             try
             {
                 var menu = await _menu.GetMenuAsync();
