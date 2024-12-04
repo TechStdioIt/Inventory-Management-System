@@ -19,6 +19,7 @@ namespace IMS.Infrastructure.DBContext
             _dbCon = _isdev ? "DevConnection" : "DevConnectionProduction";
             _connectionString = _configuration.GetConnectionString(_dbCon);
         }
+        public virtual DbSet<MenuPermission> MenuPermissions { get; set; }
         public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<IMSMenu> IMSMenus { get; set; }
 
@@ -31,10 +32,6 @@ namespace IMS.Infrastructure.DBContext
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
 
         public virtual DbSet<AspNetUserToken> AspNetUserTokens { get; set; }
-        //public virtual DbSet<Menu> Menus { get; set; }
-
-        //public virtual DbSet<Menu_Permission> Menu_Permissions { get; set; }
-        //public virtual DbSet<Menu_CTF> Menu_CTFs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -50,6 +47,10 @@ namespace IMS.Infrastructure.DBContext
 
                 entity.Property(e => e.Name).HasMaxLength(256);
                 entity.Property(e => e.NormalizedName).HasMaxLength(256);
+            });
+            modelBuilder.Entity<MenuPermission>(entity =>
+            {
+                entity.ToTable("MenuPermission");
             });
             modelBuilder.Entity<IMSMenu>(entity =>
             {
@@ -119,21 +120,6 @@ namespace IMS.Infrastructure.DBContext
 
                 entity.HasOne(d => d.User).WithMany(p => p.AspNetUserTokens).HasForeignKey(d => d.UserId);
             });
-
-
-
-            //modelBuilder.Entity<Menu_Permission>(entity =>
-            //{
-            //    entity.ToTable("Menu_Permission");
-
-            //    entity.Property(e => e.CreatedAt).HasColumnType("datetime");
-            //    entity.Property(e => e.CreatedBy).HasMaxLength(50);
-            //    entity.Property(e => e.RoleId).HasMaxLength(450);
-            //    entity.Property(e => e.UpdatedAt).HasColumnType("datetime");
-            //    entity.Property(e => e.UpdatedBy).HasMaxLength(50);
-            //});
-
-
 
             OnModelCreatingPartial(modelBuilder);
         }

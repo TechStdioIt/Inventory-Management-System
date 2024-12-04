@@ -19,6 +19,8 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<ICategory,CategoryServices>();
             services.AddScoped<ISuppliers,SuppliersServices>();
             services.AddScoped<IBank, BankServices>();
+            services.AddScoped<IUnit, UnitServices>();
+
             return services;
         }
     }
