@@ -20,7 +20,8 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<ISuppliers,SuppliersServices>();
             services.AddScoped<IBank, BankServices>();
             services.AddScoped<IUnit, UnitServices>();
-
+            services.AddScoped<ICustomer, CustomerServices>();
+            services.AddScoped<IWareHouse, WareHouseServices>();
             return services;
         }
     }
