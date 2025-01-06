@@ -37,7 +37,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("CreateOrUpdateMenu")]
+        [HttpPost("CreateOrUpdateMenu")]
         public async Task<IActionResult> CreateOrUpdateMenu(IMSMenuVm data)
         {
             try
@@ -106,5 +106,6 @@ namespace IMS.Api.Controllers
                 });
             }
         }
+
     }
 }

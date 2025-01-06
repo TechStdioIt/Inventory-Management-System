@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Dapper;
 using IMS.Application.ServiceInterface;
 using IMS.Domain.Models;
@@ -11,7 +7,6 @@ using IMS.Infrastructure.DBContext;
 using IMS.Infrastructure.IdentityModels;
 using IMS.Infrastructure.ServiceRepository.BaseRepository;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace IMS.Infrastructure.ServiceRepository
@@ -21,15 +16,82 @@ namespace IMS.Infrastructure.ServiceRepository
         public IMSMenuServices(IMSContextEF context, ApplicationDbContext applicationDb, IMSContextDapper contextDapper, UserManager<ApplicationDbUser> userManager, IConfiguration configuration) : base(context, applicationDb, contextDapper, userManager, configuration)
         {
         }
-
-        public Task<dynamic> CreateOrUpdateMenu(IMSMenuVm data)
+        public async Task<dynamic> CreateOrUpdateMenu(IMSMenuVm data)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                if (data.id == 0)
+                {
+                    parameters.Add("@Flag", 1);
+                    parameters.Add("@id", data.id);
+                    parameters.Add("@parentId", data.parentId);
+                    parameters.Add("@title", data.title);
+                    parameters.Add("@type", data.type);
+                    parameters.Add("@url", data.url);
+                    parameters.Add("@icon", data.icon);
+                    parameters.Add("@target", data.target);
+                    parameters.Add("@breadcrumbs", data.breadcrumbs);
+                    parameters.Add("@classes",data.classes);
+
+
+                }
+                else
+                {
+                    parameters.Add("@Flag", 1);
+                    parameters.Add("@id", data.id);
+                    parameters.Add("@parentId", data.parentId);
+                    parameters.Add("@title", data.title);
+                    parameters.Add("@type", data.type);
+                    parameters.Add("@url", data.url);
+                    parameters.Add("@icon", data.icon);
+                    parameters.Add("@target", data.target);
+                    parameters.Add("@breadcrumbs", data.breadcrumbs);
+                    parameters.Add("@classes", data.classes);
+
+                }
+                using (var _dp = _contextDapper.CreateConnection())
+                {
+                    var query = await _dp.QueryFirstOrDefaultAsync<dynamic>(
+                        "SPMenu",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+                    return query;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
-        public Task<dynamic> DeleteMenu(int id)
+        public async Task<dynamic> DeleteMenu(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Flag", 4);
+                parameters.Add("@id", id);
+
+                using (var _dp = _contextDapper.CreateConnection())
+                {
+                    var query = await _dp.QueryFirstOrDefaultAsync<dynamic>(
+                        "SPMenu",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+                    return query;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
 
         public async Task<dynamic> GetAllMenu()
@@ -47,10 +109,29 @@ namespace IMS.Infrastructure.ServiceRepository
                 throw;
             }
         }
-
-        public Task<dynamic> GetMenuById(int id)
+        public async Task<dynamic> GetMenuById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@Flag", 2);
+                parameters.Add("@id", id);
+
+                using (var _dp = _contextDapper.CreateConnection())
+                {
+                    var query = await _dp.QueryFirstOrDefaultAsync<dynamic>(
+                        "SPMenu",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+                    return query;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         private  List<IMSMenu> BuildMenuHierarchy(List<IMSMenu> menuItems, int? parentId)
