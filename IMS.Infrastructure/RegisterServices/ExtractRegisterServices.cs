@@ -22,6 +22,7 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<IUnit, UnitServices>();
             services.AddScoped<ICustomer, CustomerServices>();
             services.AddScoped<IWareHouse, WareHouseServices>();
+            services.AddScoped<IOrderActivityStatus,OrderActivityStatusService>();
             return services;
         }
     }
