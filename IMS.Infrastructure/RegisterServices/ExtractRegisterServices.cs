@@ -24,6 +24,7 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<IWareHouse, WareHouseServices>();
             services.AddScoped<IOrderActivityStatus,OrderActivityStatusService>();
             services.AddScoped<IPurchaseType,PurchaseTypeServices>();
+            services.AddScoped<IProduct,ProductService>();
             return services;
         }
     }
