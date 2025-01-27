@@ -6,12 +6,7 @@ using IMS.Infrastructure.IdentityModels;
 using IMS.Infrastructure.ServiceRepository.BaseRepository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IMS.Infrastructure.ServiceRepository
 {
@@ -35,31 +30,30 @@ namespace IMS.Infrastructure.ServiceRepository
                     var masterInfo = await _dp.QueryAsync<dynamic>("SP_Package", parameters, commandType: CommandType.StoredProcedure);
 
                     // Fetch details information
+                    parameters = new DynamicParameters(); // Reinitialize parameters to avoid duplication issues
                     parameters.Add("@Flag", 2);
                     var detailsInfo = await _dp.QueryAsync<dynamic>("SP_Package", parameters, commandType: CommandType.StoredProcedure);
 
                     // Combine masterInfo with detailsInfo by matching id
                     var combinedData = masterInfo.Select(master => new
                     {
-                        masterInfo = new
-                        {
-                            id = master.id,
-                            name = master.name,
-                            detailsInfo = detailsInfo.Where(detail => detail.detailsID == master.id).ToList()
-                        }
+                        id = master.id,
+                        name = master.name,
+                        detailsInfo = detailsInfo.Where(detail => detail.masterId == master.id).ToList()
                     }).ToList();
 
-                    // Return only the outer status, message, and data without nested data
+                    // Return the combined data directly
                     return combinedData;
-                    
                 }
             }
             catch (Exception ex)
             {
-                // Log the exception if needed
-                throw;
+
+                return ex;
+
             }
         }
+
 
 
 
