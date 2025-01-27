@@ -160,7 +160,7 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
 {
-    builder.WithOrigins("http://localhost:4200", "http://localhost:4200", "http://103.119.101.170:4003", "http://192.168.20.6:4003").AllowAnyMethod().AllowAnyHeader()
+    builder.WithOrigins("http://localhost:4200", "http://localhost:4400", "http://103.119.101.170:4003", "http://192.168.20.6:4003").AllowAnyMethod().AllowAnyHeader()
             .AllowCredentials();
 }));
 var app = builder.Build();
