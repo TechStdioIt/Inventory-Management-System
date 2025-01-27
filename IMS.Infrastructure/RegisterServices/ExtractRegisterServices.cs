@@ -26,6 +26,7 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<IPurchaseType,PurchaseTypeServices>();
             services.AddScoped<IProduct,ProductService>();
             services.AddScoped<IPurchasOrder, PurchasOrderServices>();
+            services.AddScoped<IBusiness, BusinessService>();
             return services;
         }
     }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IMS.Application.ServiceInterface
+namespace IMS.Domain.ViewModels
 {
-    public interface IBusiness
+    public class BusinessVM
     {
-        Task<dynamic> GetPackageData();
     }
 }
