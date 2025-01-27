@@ -84,7 +84,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeletUnit")]
+        [HttpDelete("DeletUnit")]
         public async Task<IActionResult> DeletUnit(int id)
         {
             try

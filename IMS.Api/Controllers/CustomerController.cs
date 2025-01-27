@@ -85,7 +85,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeleteCustomer")]
+        [HttpDelete("DeleteCustomer")]
         public async Task<IActionResult> DeleteCustomer(int id)
         {
             try

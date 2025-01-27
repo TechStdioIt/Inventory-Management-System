@@ -83,7 +83,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeleteMenu")]
+        [HttpDelete("DeleteMenu")]
         public async Task<IActionResult> DeleteMenu(int id)
         {
             try

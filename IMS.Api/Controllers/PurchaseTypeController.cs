@@ -7,24 +7,24 @@ namespace IMS.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class WareHouseController : ControllerBase
+    public class PurchaseTypeController : ControllerBase
     {
-        private readonly  IWareHouse _wareHouse;
+        private readonly IPurchaseType _purchaseType;
 
-        public WareHouseController(IWareHouse wareHouse)
+        public PurchaseTypeController(IPurchaseType purchaseType )
         {
-            _wareHouse = wareHouse;
+            _purchaseType = purchaseType;
         }
-        [HttpGet("GetAllWareHouse")]
-        public async Task<IActionResult> GetAllWareHouse()
+        [HttpGet("GetAllPurchaseType")]
+        public async Task<IActionResult> GetAllPurchaseType()
         {
             try
             {
-                var result = await _wareHouse.GetAllWareHouse();
+                var result = await _purchaseType.GetAllPurchaseType();
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Data retrieved successfully",
                     Data = result
                 });
             }
@@ -38,16 +38,16 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpPost("CreateOrUpdateWareHouse")]
-        public async Task<IActionResult> CreateOrUpdateWareHouse(WareHouseVM data)
+        [HttpPost("CreateOrUpdatePurchaseType")]
+        public async Task<IActionResult> CreateOrUpdatePurchaseType(PurchaseTypeVM data)
         {
             try
             {
-                var result = await _wareHouse.CreateOrUpdateWareHouse(data);
+                var result = await _purchaseType.CreateOrUpdatePurchaseType(data);
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Data retrieved successfully",
                     Data = result
                 });
             }
@@ -61,16 +61,16 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("GetWareHouseById")]
-        public async Task<IActionResult> GetWareHouseById(int id)
+        [HttpGet("GetPurchaseTypeById")]
+        public async Task<IActionResult> GetPurchaseTypeById(int id)
         {
             try
             {
-                var result = await _wareHouse.GetWareHouseById(id);
+                var result = await _purchaseType.GetPurchaseTypeById(id);
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Data retrieved successfully",
                     Data = result
                 });
             }
@@ -84,16 +84,16 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpDelete("DeleteWareHouse")]
-        public async Task<IActionResult> DeleteWareHouse(int id)
+        [HttpDelete("DeletePurchaseType")]
+        public async Task<IActionResult> DeletePurchaseType(int id)
         {
             try
             {
-                var result = await _wareHouse.DeleteWareHouse(id);
+                var result = await _purchaseType.DeletePurchaseType(id);
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Data retrieved successfully",
                     Data = result
                 });
             }

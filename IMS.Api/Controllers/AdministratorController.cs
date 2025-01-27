@@ -279,49 +279,6 @@ namespace IMS.Api.Controllers
             return BadRequest();
         }
 
-        //[HttpPost("CreateUser")]
-        //public async Task<ActionResult<RegisterVM>> CreateUser([FromForm] IFormFile file, [FromForm] string json_data)
-        //{
-        //	if (ModelState.IsValid)
-        //	{
-        //		var data = JsonConvert.DeserializeObject<RegisterVM>(json_data);
-        //		data.CreatedAt = data.UpdatedAt = DateTime.Now;
-        //		if (await _administrator.CreateUserAsync(data, file))
-        //		{
-        //			return Ok();
-        //		}
-        //		else
-        //		{
-        //			return BadRequest();
-        //		}
-        //	}
-        //	return BadRequest("Some properties are not valid");
-        //}
-
-        //[HttpPut("UpdateUser/{id}")]
-        //public async Task<ActionResult<RegisterVM>> UpdateUser([FromForm] IFormFile file, [FromForm] string json_data)
-        //{
-        //	if (ModelState.IsValid)
-        //	{
-        //		var data = JsonConvert.DeserializeObject<RegisterVM>(json_data);
-        //		var userWithId = await _userManager.FindByIdAsync(data.Id);
-
-        //		if (userWithId != null)
-        //		{
-        //			var result = await _administrator.UpdateUserAsync(data, file);
-        //			if (result != null)
-        //			{
-        //				return Ok(result);
-        //			}
-        //			return BadRequest("Not Successfully Updated");
-        //		}
-        //	}
-
-        //	return BadRequest(" Not Successfully Updated");
-
-
-        //}
-
         [HttpDelete("Delete/{ListOfId}")]
         public async Task<IActionResult> Delete(string ListOfId)
         {

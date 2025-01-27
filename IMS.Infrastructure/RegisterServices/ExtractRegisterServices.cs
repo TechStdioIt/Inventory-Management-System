@@ -23,6 +23,7 @@ namespace IMS.Infrastructure.RegisterServices
             services.AddScoped<ICustomer, CustomerServices>();
             services.AddScoped<IWareHouse, WareHouseServices>();
             services.AddScoped<IOrderActivityStatus,OrderActivityStatusService>();
+            services.AddScoped<IPurchaseType,PurchaseTypeServices>();
             return services;
         }
     }
