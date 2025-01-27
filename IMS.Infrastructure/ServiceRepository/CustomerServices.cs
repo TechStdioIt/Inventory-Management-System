@@ -32,6 +32,13 @@ namespace IMS.Infrastructure.ServiceRepository
                     parameters.Add("@FLAG", 1);
                     parameters.Add("@userId", data.userId);
                     parameters.Add("@name", data.name);
+                    parameters.Add("@email", data.email);
+                    parameters.Add("@phone", data.phone);
+                    parameters.Add("@address", data.address);
+                    parameters.Add("@customerTypeId", data.customerTypeId);
+                    parameters.Add("@city", data.city);
+                    parameters.Add("@cp", data.cp);
+
                 }
                 else
                 {
@@ -39,6 +46,12 @@ namespace IMS.Infrastructure.ServiceRepository
                     parameters.Add("@id", data.id);
                     parameters.Add("@userId", data.userId);
                     parameters.Add("@name", data.name);
+                    parameters.Add("@email", data.email);
+                    parameters.Add("@phone", data.phone);
+                    parameters.Add("@address", data.address);
+                    parameters.Add("@customerTypeId", data.customerTypeId);
+                    parameters.Add("@city", data.city);
+                    parameters.Add("@cp", data.cp);
                 }
                 using (var _dp = _contextDapper.CreateConnection())
                 {
