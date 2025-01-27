@@ -84,7 +84,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeleteBank")]
+        [HttpDelete("DeleteBank")]
         public async Task<IActionResult> DeleteBank(int id)
         {
             try
@@ -93,7 +93,7 @@ namespace IMS.Api.Controllers
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Deleted successfully",
                     Data = result
                 });
             }
@@ -102,7 +102,7 @@ namespace IMS.Api.Controllers
                 return StatusCode(500, new
                 {
                     Status = 500,
-                    Message = "An error occurred while retrieving reviews",
+                    Message = "An error occurred",
                     ErrorDetails = ex.Message
                 });
             }

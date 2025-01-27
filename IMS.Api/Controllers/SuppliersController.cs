@@ -85,7 +85,7 @@ namespace IMS.Api.Controllers
                 });
             }
         }
-        [HttpGet("DeleteSuppliers")]
+        [HttpDelete("DeleteSuppliers")]
         public async Task<IActionResult> DeleteSuppliers(int id)
         {
             try
@@ -94,7 +94,7 @@ namespace IMS.Api.Controllers
                 return Ok(new
                 {
                     Status = 200,
-                    Message = "Reviews retrieved successfully",
+                    Message = "Deleted successfully",
                     Data = result
                 });
             }
@@ -103,10 +103,11 @@ namespace IMS.Api.Controllers
                 return StatusCode(500, new
                 {
                     Status = 500,
-                    Message = "An error occurred while retrieving reviews",
+                    Message = "An error occurred while deleting the supplier",
                     ErrorDetails = ex.Message
                 });
             }
         }
+
     }
 }
