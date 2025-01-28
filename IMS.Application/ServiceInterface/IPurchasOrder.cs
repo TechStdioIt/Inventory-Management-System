@@ -10,5 +10,6 @@ namespace IMS.Application.ServiceInterface
     {
 
         Task<dynamic> CreateOrUpdatePurchaseOrder (string data);
+        Task<dynamic> GetAllpurchaseOrder();
     }
 }

@@ -9,10 +9,10 @@ namespace IMS.Api.Controllers
     [ApiController]
     public class PurchasOrderController : ControllerBase
     {
-        private readonly IPurchasOrder _purchasOrder;
-        public PurchasOrderController(IPurchasOrder purchasOrder)
+        private readonly IPurchasOrder _purchaseOrder;
+        public PurchasOrderController(IPurchasOrder purchaseOrder)
         {
-            _purchasOrder = purchasOrder;
+            _purchaseOrder = purchaseOrder;
         }
 
         [HttpPost("CreateOrUpdatePurchaseOrder")]
@@ -21,10 +21,33 @@ namespace IMS.Api.Controllers
             try
             {
                 var jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(data);
-                var result = await _purchasOrder.CreateOrUpdatePurchaseOrder(jsonData);
+                var result = await _purchaseOrder.CreateOrUpdatePurchaseOrder(jsonData);
                 return Ok(new
                 {
                     Status = 200,
+                    Data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Status = 500,
+                    Message = "An error occurred while retrieving reviews",
+                    ErrorDetails = ex.Message
+                });
+            }
+        }
+        [HttpGet("GetAllpurchaseOrder")]
+        public async Task<IActionResult> GetAllpurchaseOrder()
+        {
+            try
+            {
+                var result = await _purchaseOrder.GetAllpurchaseOrder();
+                return Ok(new
+                {
+                    Status = 200,
+                    Message = "Data retrieved successfully",
                     Data = result
                 });
             }
